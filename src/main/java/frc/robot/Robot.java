@@ -23,6 +23,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+      suck.init();
   }
 
   @Override
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+
   }
 
   @Override
