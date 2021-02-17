@@ -18,13 +18,14 @@ import frc.robot.component.shoot;
  * project.
  */
 public class Robot extends TimedRobot {
-  Joystick.joy;
+  Joystick joy;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
+      joy = new Joystick(1);
       suck.init();
       shoot.init();
   }
