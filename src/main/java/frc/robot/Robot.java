@@ -7,8 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.component.shoot;
+import frc.robot.component.suck;
+import frc.robot.component.upup;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,6 +31,7 @@ public class Robot extends TimedRobot {
       joy = new Joystick(1);
       suck.init();
       shoot.init();
+      upup.init();
   }
 
   @Override
@@ -50,6 +54,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     suck.teleop();
     shoot.teleop();
+    upup.teleop();
   }
 
   @Override
