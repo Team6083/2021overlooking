@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.component.shoot;
 import frc.robot.component.suck;
@@ -21,17 +20,17 @@ import frc.robot.component.upup;
  * project.
  */
 public class Robot extends TimedRobot {
-  Joystick joy;
+  public static XBox xbox;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
-      joy = new Joystick(1);
-      suck.init();
-      shoot.init();
-      upup.init();
+    xbox = new XBox(0);
+    suck.init();
+    shoot.init();
+    upup.init();
   }
 
   @Override
