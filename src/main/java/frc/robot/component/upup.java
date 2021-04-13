@@ -1,14 +1,15 @@
 package frc.robot.component;
 
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.Joystick;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import frc.robot.Robot;
 public class upup{
-    private static VictorSP up;
+   
+    private static WPI_VictorSPX up;
     public static void init(){
-    up =  new VictorSP( 87 );
+    up =  new WPI_VictorSPX( 87 );
     }
     public static void teleop(){
-        if(Robot.joy.getRawButton(87)){
+        if(Robot.xbox.getBButton()){
             up.set(0.5);
         }else{
             up.set(0);

@@ -1,7 +1,8 @@
 package frc.robot.component;
 
-import edu.wpi.first.wpilibj.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.Joystick;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import frc.robot.Robot;
 
 public class suck{
     private static WPI_VictorSPX suck;
@@ -11,7 +12,7 @@ public class suck{
     }
 
     public static void teleop(){
-        if(Robot.joy.getRawButton(1)){
+        if(Robot.xbox.getXButton()) {
             suck.set(ControlMode.PercentOutput, 0.5);
         }else{
             suck.set(ControlMode.PercentOutput, 0);
