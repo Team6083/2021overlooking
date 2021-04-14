@@ -22,7 +22,7 @@ public class drivebase {
         drive = new DifferentialDrive(rightBack, rightFront, leftBack, leftFront);
     }
 
-    public static void teleOp() {
+    public static void teleop() {
         drive.tankDrive(Robot.xbox);
     }
 }

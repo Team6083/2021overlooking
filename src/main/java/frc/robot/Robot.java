@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.component.Visiontrake;
+import frc.robot.component.drivebase;
+import frc.robot.component.sent;
 import frc.robot.component.shoot;
 import frc.robot.component.suck;
 import frc.robot.component.upup;
@@ -28,9 +31,12 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     xbox = new XBox(0);
+    drivebase.init();
     suck.init();
+    sent.init();
     shoot.init();
     upup.init();
+    Visiontrake.init();
   }
 
   @Override
@@ -51,9 +57,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    drivebase.teleop();
     suck.teleop();
+    sent.teleop();
     shoot.teleop();
     upup.teleop();
+    Visiontrake.teleop();
   }
 
   @Override
