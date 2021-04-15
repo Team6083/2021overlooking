@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 import frc.robot.Robot;
 
-public class drivebase {
+public class DriveBase {
     public static DifferentialDrive drive;
     public static VictorSP rightFront;
     public static VictorSP rightBack;
@@ -29,5 +29,9 @@ public class drivebase {
 
     public static void teleOp() {
         drive.tankDrive(Robot.xbox);
+    }
+    
+    public static void directControl(double left, double right) {
+        drive.directControl(left, right);
     }
 }
