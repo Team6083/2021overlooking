@@ -1,6 +1,9 @@
 package frc.robot.component;
 
-import edu.wpi.first.wpilibj.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import frc.robot.Robot;
 
 public class shoot{
     private static WPI_VictorSPX shoot;
@@ -10,7 +13,7 @@ public class shoot{
     }
     
     public static void teleop(){
-        if(Robot.joy.getRawButton(2)){
+        if(Robot.xbox.getAButton()){
             shoot.set(ControlMode.PercentOutput, 0.5);
         }else{
             shoot.set(ControlMode.PercentOutput, 0);
