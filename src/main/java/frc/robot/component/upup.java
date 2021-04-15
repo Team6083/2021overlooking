@@ -1,5 +1,6 @@
 package frc.robot.component;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Robot;
 public class upup{
@@ -10,9 +11,13 @@ public class upup{
     }
     public static void teleop(){
         if(Robot.xbox.getBButton()){
-            up.set(0.5);
-        }else{
-            up.set(0);
+            up.set(ControlMode.PercentOutput,0.5);
+        }
+        else if(Robot.xbox.getAButton()){
+            up.set(ControlMode.PercentOutput,-0.5);
+        }
+        else{
+            up.set(ControlMode.PercentOutput,0);
         }
     }
 }

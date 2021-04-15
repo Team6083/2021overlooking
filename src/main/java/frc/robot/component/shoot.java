@@ -7,18 +7,28 @@ import frc.robot.Robot;
 
 public class shoot{
     private static WPI_VictorSPX shoot;
+    private static WPI_VictorSPX turn;
 
     public static void init(){
          shoot =  new WPI_VictorSPX( 2 );
+         turn = new WPI_VictorSPX(4);
     }
     
     public static void teleop(){
-        if(Robot.xbox.getAButton()){
+        if(Robot.xbox.getYButton()){
             shoot.set(ControlMode.PercentOutput, 0.5);
         }else{
             shoot.set(ControlMode.PercentOutput, 0);
         }
-        
+        if(Robot.xbox.getRawButton(4)){
+            turn.set(ControlMode.PercentOutput,0.5);
+        }
+        else if(Robot.xbox.getRawButton(5)){
+            turn.set(ControlMode.PercentOutput,-0.5);
+        }
+        else{
+            turn.set(ControlMode.PercentOutput,0);
+        }
     }
 
 }
