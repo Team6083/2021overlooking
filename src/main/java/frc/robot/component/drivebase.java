@@ -7,7 +7,7 @@ import org.team6083.lib.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-public class drivebase {
+public class DriveBase {
     public static DifferentialDrive drive;
     public static WPI_VictorSPX rightFront;
     public static WPI_VictorSPX rightBack;
@@ -58,5 +58,9 @@ public class drivebase {
     }
     public static void track(double speed, double rotation, boolean input) {
         drive.arcadeDrive(speed, rotation, input);
+    }
+    
+    public static void directControl(double left, double right) {
+        drive.directControl(left, right);
     }
 }
