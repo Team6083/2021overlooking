@@ -1,10 +1,7 @@
 package frc.robot.component;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import org.team6083.lib.drive.DifferentialDrive;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class drivebase {
