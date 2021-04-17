@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Gyroson;
-import frc.robot.component.DriveBase;
+import frc.robot.component.drivebase;
 
 
 public class AutoEngine {
@@ -80,7 +80,7 @@ public class AutoEngine {
         leftSpeed = gWalker.getLeftPower();
         rightSpeed = gWalker.getRightPower();
         if (!isAiming) {
-            DriveBase.directControl(leftSpeed, -rightSpeed);
+            drivebase.directControl(leftSpeed, -rightSpeed);
         }
 
         showDashboard();
