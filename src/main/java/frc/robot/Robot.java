@@ -8,7 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.component.Visiontrake;
+import frc.robot.component.Visiontrack;
 import frc.robot.component.drivebase;
 import frc.robot.component.sent;
 import frc.robot.component.shoot;
@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
     sent.init();
     shoot.init();
     upup.init();
-    Visiontrake.init();
+    Visiontrack.init();
   }
 
   @Override
@@ -62,7 +62,6 @@ public class Robot extends TimedRobot {
     sent.teleop();
     shoot.teleop();
     upup.teleop();
-    Visiontrake.teleop();
   }
 
   @Override
