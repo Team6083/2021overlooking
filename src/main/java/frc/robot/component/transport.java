@@ -29,4 +29,8 @@ public class transport {
             straight.set(ControlMode.PercentOutput,0);
         }
     }
+    public static void autonomousTransport(){
+        horizontal.set(ControlMode.PercentOutput,0.5);
+        straight.set(ControlMode.PercentOutput,0.5);
+    }
 }

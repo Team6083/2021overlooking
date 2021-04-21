@@ -59,13 +59,13 @@ public class AutoEngine {
     public static void loop() {
         switch (autoSelected) {
         case kPort:
-            AutoStep.loop(0, 0);
+            AutoStep.loop(0);
             break;
         case kStartLine:
-            AutoStep.loop(85, 78.85);
+            AutoStep.loop(57.35);
             break;
         case kLoaingBay:
-            AutoStep.loop(80, 131.68);
+            AutoStep.loop(39.23);
             break;
         case kDoNothing:
         default:
