@@ -28,11 +28,25 @@ public class shoot{
         }
 
         if(Robot.xbox.getBButton()){
-            shoot.set(ControlMode.PercentOutput,0.5);
+            shoot.set(ControlMode.PercentOutput,0.7);
         }else{
             shoot.set(ControlMode.PercentOutput, 0);
         }
         
+    }
+
+    public static void startshoot(boolean startshooting){
+        if(startshooting){
+            shoot.set(ControlMode.PercentOutput, 0.7);
+        }else{
+            shoot.set(ControlMode.PercentOutput, 0);
+        }
+    }
+
+    public static boolean limit(){
+        boolean keep = true;
+
+        return keep;
     }
 
 }

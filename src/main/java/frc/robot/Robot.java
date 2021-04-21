@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
     sent.teleop();
     shoot.teleop();
     upup.teleop();
+    Visiontrack.teleop();
   }
 
   @Override
