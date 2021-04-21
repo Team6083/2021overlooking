@@ -30,5 +30,13 @@ public class shoot{
             turn.set(ControlMode.PercentOutput,0);
         }
     }
-
+    public static void shootingTarget() {
+        shoot.set(ControlMode.PercentOutput,0.5);
+    }
+    public static void findingTarget() {
+        turn.set(ControlMode.PercentOutput,0.5);
+    }
+    public static void aimingTarget(double shootSpeeed){
+        shoot.set(ControlMode.PercentOutput,shootSpeeed);
+    }
 }

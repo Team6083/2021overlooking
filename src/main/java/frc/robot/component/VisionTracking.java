@@ -100,10 +100,16 @@ public class VisionTracking {
       m_LimelightSteerCommand = 0.3;
       m_LimelightDriveCommand = 0.0;
       drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
+      shoot.findingTarget();
     } else {
       Update_Limelight_Tracking();
+      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+      double steering_adjust = -PID_controller.calculate(tx, 0.0);
+      shoot.aimingTarget(steering_adjust);
       drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
+
       if (detectIfTrackingFinished()) {
+        shoot.shootingTarget();
         setLEDMode(1);
         setCamMode(1);
         automaticShootingFinished = true;
