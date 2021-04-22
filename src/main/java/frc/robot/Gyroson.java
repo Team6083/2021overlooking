@@ -8,7 +8,6 @@ public class Gyroson extends AHRS  {
     public Gyroson(SPI.Port port){
         super(port);
     }
-    
     @Override
     public double getAngle(){
         return this.getYaw();
