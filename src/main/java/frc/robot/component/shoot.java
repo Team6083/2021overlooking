@@ -19,15 +19,15 @@ public class shoot{
     
     public static void teleop(){
 
-        if(Robot.xbox.getBumper(Hand.kRight)){
+        if(Robot.maincontroller.getTriggerAxis(Hand.kRight)>Robot.maincontroller.getTriggerAxis(Hand.kLeft)){
             spin.set(ControlMode.PercentOutput,0.3);
-        }else if(Robot.xbox.getBumper(Hand.kLeft)){
+        }else if(Robot.maincontroller.getTriggerAxis(Hand.kLeft)>Robot.maincontroller.getTriggerAxis(Hand.kRight)){
             spin.set(ControlMode.PercentOutput, -0.3);
         }else{
             spin.set(ControlMode.PercentOutput,0);
         }
 
-        if(Robot.xbox.getBButton()){
+        if(Robot.maincontroller.getBButton()){
             shoot.set(ControlMode.PercentOutput,0.7);
         }else{
             shoot.set(ControlMode.PercentOutput, 0);

@@ -17,17 +17,17 @@ public class upup{
     }
 
     public static void teleop(){
-        if(Robot.xbox.getTriggerAxis(Hand.kRight)>Robot.xbox.getTriggerAxis(Hand.kLeft)){
+        if(Robot.maincontroller.getXButtonPressed()){
             up.set(ControlMode.PercentOutput,0.5);
-        }else if(Robot.xbox.getTriggerAxis(Hand.kLeft)>Robot.xbox.getTriggerAxis(Hand.kRight)){
+        }else if(Robot.maincontroller.getAButtonPressed()){
             up.set(ControlMode.PercentOutput,-0.5);
         }else{
             up.set(ControlMode.PercentOutput,0);
         }
 
-        if(Robot.xbox.getPOV()==0){
+        if(Robot.vicecontroller.getTriggerAxis(Hand.kRight)>Robot.vicecontroller.getTriggerAxis(Hand.kLeft)){
             rope.set(ControlMode.PercentOutput, 0.5);
-        }else if(Robot.xbox.getPOV()==180){
+        }else if(Robot.vicecontroller.getTriggerAxis(Hand.kLeft)>Robot.vicecontroller.getTriggerAxis(Hand.kRight)){
             rope.set(ControlMode.PercentOutput, -0.5);
         }else{
             rope.set(ControlMode.PercentOutput, 0);

@@ -23,14 +23,16 @@ import frc.robot.component.upup;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static XBox xbox;
+  public static XBox maincontroller;
+  public static XBox vicecontroller;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
-    xbox = new XBox(0);
+    maincontroller = new XBox(0);
+    vicecontroller = new XBox(1);
     drivebase.init();
     suck.init();
     sent.init();

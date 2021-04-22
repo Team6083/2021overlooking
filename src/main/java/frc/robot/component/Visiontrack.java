@@ -22,7 +22,7 @@ public class Visiontrack {
     }
 
     public static void teleop(){
-        if(Robot.xbox.getStartButtonPressed()){
+        if(Robot.vicecontroller.getXButtonPressed()){
             detect = !detect;
             SetCamMode(0);
             SetLEDMode(3);

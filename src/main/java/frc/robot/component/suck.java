@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class suck{
     private static WPI_VictorSPX suck;
@@ -27,7 +28,7 @@ public class suck{
     }
 
     public static void teleop(){
-        if(Robot.xbox.getStartButtonPressed()){     //check for if the code is right
+        if(Robot.maincontroller.getStickButtonPressed(Hand.kRight)){     //check for if the code is right
             if(left.get()==Value.kForward && right.get()==Value.kForward){
                 left.set(Value.kReverse);
                 right.set(Value.kReverse);
@@ -40,7 +41,7 @@ public class suck{
             right.set(Value.kOff);
         }
 
-        if(Robot.xbox.getAButton()){
+        if(Robot.maincontroller.getYButton()){
             issucked = true;
             suck.set(ControlMode.PercentOutput, 0.5);
         }else{
