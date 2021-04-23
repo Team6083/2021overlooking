@@ -35,12 +35,13 @@ public class shoot{
         
     }
 
-    public static void startshoot(boolean startshooting){
-        if(startshooting){
-            shoot.set(ControlMode.PercentOutput, 0.7);
-        }else{
-            shoot.set(ControlMode.PercentOutput, 0);
-        }
+    public static void startshoot(){
+        shoot.set(ControlMode.PercentOutput, 0.7);
+       
+    }
+
+    public static void spin(double speed){
+        spin.set(ControlMode.PercentOutput, speed);
     }
 
     public static boolean limit(){
