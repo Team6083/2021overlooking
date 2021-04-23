@@ -28,9 +28,10 @@ public class Visiontrack {
             SetLEDMode(3);
         }
 
-        if(detect){
+        if(detect && finishtracking()){
             aiming();
         }else{
+            shoot.startshoot();
             SetCamMode(1);
             SetLEDMode(1);
         }
@@ -68,8 +69,35 @@ public class Visiontrack {
         if(shoot.limit()){  //if turrent spin to the limit position rotate the drivebase
             drivebase.drive.arcadeDrive(walk, heading, false);
         }else{
+            shoot.spin(heading);
             drivebase.drive.directControl(walk, -walk);
         }
+    }
+
+    public static void seek(){
+        double tv = gettv();
+        if(tv==0){
+            if(shoot.limit()){
+                drivebase.drive.directControl(0.3, 0.3);
+            }else{
+                shoot.spin(0.3);
+            }
+        }else{
+            aiming();
+        }
+
+    }
+
+    private static boolean finishtracking(){
+        double error = 3;
+        boolean finished = false;
+        if(Math.abs(gettx()) < error && Math.abs(getty()) < error){
+            finished = true;
+        }else{
+            finished = false;
+        }
+
+        return finished;
     }
 
     private static void SetCamMode(int mode){
