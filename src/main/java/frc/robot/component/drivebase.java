@@ -9,9 +9,9 @@ public class drivebase {
     public static WPI_VictorSPX right2;
     public static WPI_VictorSPX left1;
     public static WPI_VictorSPX left2;
-    private static final int L1 = 0;
-    private static final int L2 = 1;
-    private static final int R1 = 2;
+    private static final int L1 = 6;
+    private static final int L2 = 7;
+    private static final int R1 = 5;
     private static final int R2 = 3;
 
     public static void init() {

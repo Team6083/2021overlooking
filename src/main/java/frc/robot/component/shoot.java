@@ -9,7 +9,7 @@ import frc.robot.Robot;
 public class shoot{
     private static WPI_VictorSPX shoot;
     private static WPI_VictorSPX spin;
-    private static final int shootport = 2;
+    private static final int shootport = 1;
     private static final int spinport = 3;
 
     public static void init(){
@@ -37,7 +37,6 @@ public class shoot{
 
     public static void startshoot(){
         shoot.set(ControlMode.PercentOutput, 0.7);
-       
     }
 
     public static void spin(double speed){
@@ -45,7 +44,7 @@ public class shoot{
     }
 
     public static boolean limit(){
-        boolean keep = true;
+        boolean keep = false;
 
         return keep;
     }

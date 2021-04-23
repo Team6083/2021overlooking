@@ -12,8 +12,8 @@ public class sent {
     private static WPI_VictorSPX sent_high;
     private static WPI_VictorSPX sent_low;
     private static RobotPower power;
-    private static final int port_h = 8;
-    private static final int port_l = 9;
+    private static final int port_h = 4;
+    private static final int port_l = 8;
     private static final int shootpower = 1;
     private static final double shootAmp = 4;
 

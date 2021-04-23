@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class suck{
     private static WPI_VictorSPX suck;
     private static Compressor com;
     private static DoubleSolenoid left;
     private static DoubleSolenoid right;
-    private static final int port = 1;
-    public static boolean issucked;
+    private static final int port = 9;
 
     public static void init(){
         suck = new WPI_VictorSPX(port);
@@ -42,13 +42,16 @@ public class suck{
         }
 
         if(Robot.maincontroller.getYButton()){
-            issucked = true;
             suck.set(ControlMode.PercentOutput, 0.5);
         }else{
             suck.set(ControlMode.PercentOutput, 0);
-            issucked = false;
         }
         
+    }
+
+    public static void showDashboard(){
+        SmartDashboard.putBoolean("suck/LeftSolenoid", left.get()==Value.kForward);
+        SmartDashboard.putBoolean("suck/RightSolenoid", right.get()==Value.kForward);
     }
 
 }

@@ -8,8 +8,8 @@ import frc.robot.Robot;
 public class upup{
     private static WPI_VictorSPX up;
     private static WPI_VictorSPX rope;
-    private static final int UpPort = 3;
-    private static final int RopePort = 4;
+    private static final int UpPort = 2;
+    private static final int RopePort = 10;
 
     public static void init(){
         up = new WPI_VictorSPX(UpPort);
