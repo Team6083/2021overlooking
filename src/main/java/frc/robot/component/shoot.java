@@ -18,7 +18,7 @@ public class shoot{
     
     public static void teleop(){
         if(Robot.xbox_1.getBButton()){
-            shoot.set(0.5);
+            shoot.set(0.8);
         }else{
             shoot.set(0);
         }
@@ -34,10 +34,10 @@ public class shoot{
         }
     }
     public static void shootingTarget() {
-        shoot.set(0.5);
+        shoot.set(0.8);
     }
     public static void findingTarget() {
-        turn.set(0.5);
+        turn.set(0.2);
     }
     public static void aimingTarget(double shootSpeeed){
         shoot.set(shootSpeeed);
