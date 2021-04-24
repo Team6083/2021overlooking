@@ -3,7 +3,6 @@ package frc.robot.component;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.Robot;
 
 public class transport {
@@ -37,7 +36,7 @@ public class transport {
 
     }
     public static void autonomousTransport(){
-        horizontal.set(ControlMode.PercentOutput,0.4);
-        straight.set(ControlMode.PercentOutput,0.4);
+        horizontal.set(ControlMode.PercentOutput,-0.5);
+        straight.set(ControlMode.PercentOutput,-0.5);
     }
 }

@@ -3,7 +3,6 @@ package frc.robot.component;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.Robot;
 
@@ -18,15 +17,18 @@ public class shoot{
     
     public static void teleop(){
         if(Robot.xbox_1.getBButton()){
-            shoot.set(0.8);
+            shoot.set(0.85);
+            if(shoot.get()>0.8){
+                transport.autonomousTransport();
+            }
         }else{
             shoot.set(0);
         }
         
-        if(Robot.xbox_1.getTriggerAxis(Hand.kLeft)>0.7){
+        if(Robot.xbox_1.getTriggerAxis(Hand.kLeft)>Robot.xbox_1.getTriggerAxis(Hand.kRight)){
             turn.set(ControlMode.PercentOutput,-0.1);
         }
-        else if(Robot.xbox_1.getTriggerAxis(Hand.kRight)>0.7){
+        else if(Robot.xbox_1.getTriggerAxis(Hand.kRight)>Robot.xbox_1.getTriggerAxis(Hand.kLeft)){
             turn.set(ControlMode.PercentOutput,0.1);
         }
         else{
