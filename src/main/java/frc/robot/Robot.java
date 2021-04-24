@@ -12,7 +12,7 @@ import frc.robot.component.drivebase;
 import frc.robot.component.shoot;
 import frc.robot.component.suck;
 import frc.robot.component.transport;
-import frc.robot.component.upup;
+import frc.robot.component.up;
 import frc.robot.system.NewAutoEngine;
 
 /**
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
       shoot.init();
       suck.init();
       transport.init();
-      upup.init();
+      up.init();
       VisionTracking.init();
       NewAutoEngine.init();
   }
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
     shoot.teleop();
     suck.teleop();
     transport.teleOp();
-    upup.teleop();
+    up.teleop();
     VisionTracking.teleop();
   }
 

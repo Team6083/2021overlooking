@@ -3,7 +3,7 @@ package frc.robot.component;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Robot;
-public class upup{
+public class up{
    
     private static WPI_VictorSPX up;
     public static void init(){
