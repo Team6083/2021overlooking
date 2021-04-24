@@ -9,8 +9,7 @@ import org.team6083.lib.RobotPower;
 import frc.robot.Robot;
 
 public class VisionTracking {
-  private static boolean automaticShootingFinished;
-  private static boolean ledgate = false;
+  private static boolean LimelightStart = false;
   private static double m_LimelightDriveCommand = 0.0;
   private static double m_LimelightSteerCommand = 0.0;
 
@@ -23,24 +22,24 @@ public class VisionTracking {
 
   public static void init() {
     time = new Timer();
-    PID_controller = new PIDController(0.04, 0.001, 0.001);
+    PID_controller = new PIDController(0.04, 0.001, 0.0001);
     setCamMode(0);
     setLEDMode(3);
   }
 
   public static void teleop() {
     if (Robot.xbox.getStartButtonPressed()) {
-      ledgate = !ledgate;
+      LimelightStart = !LimelightStart;
     }
 
-    if (ledgate) {
+    if (LimelightStart) {
       setCamMode(0);
       setLEDMode(3);
-      Update_Limelight_Tracking();
-      drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
+      Limelight_Tracking();
+      
       
       if (detectIfTrackingFinished()) {
-        ledgate = false;
+        LimelightStart = false;
         setCamMode(1);
         setLEDMode(1);
       }
@@ -52,17 +51,17 @@ public class VisionTracking {
     showDashboardTeleop();
   }
 
-  public static void Update_Limelight_Tracking() {
+  public static void Limelight_Tracking() {
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double drive_cmd = PID_controller.calculate(ty, 0);
     double steering_adjust = -PID_controller.calculate(tx, 0.0); // wpilib function use to adjust the robot to aiming target
-
     if (tv < 1.0) {
-      m_LimelightDriveCommand = 0.0;
-      m_LimelightSteerCommand = 0.0;
-      return;
+      seeking();
+    }
+    else {
+      drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
     }
 
     // use MAX_DRIVE to limit robot turning speed
@@ -90,7 +89,6 @@ public class VisionTracking {
 
   public static void seeking() {
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-    automaticShootingFinished = false;
     
     setCamMode(0);
     setLEDMode(3);
@@ -100,19 +98,17 @@ public class VisionTracking {
       m_LimelightSteerCommand = 0.3;
       m_LimelightDriveCommand = 0.0;
       drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
-      shoot.findingTarget();
+      //shoot.findingTarget();
     } else {
-      Update_Limelight_Tracking();
-      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-      double steering_adjust = -PID_controller.calculate(tx, 0.0);
-      shoot.aimingTarget(steering_adjust);
-      drivebase.track(m_LimelightDriveCommand, m_LimelightSteerCommand, false);
+      Limelight_Tracking();
+      //double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+      //double steering_adjust = -PID_controller.calculate(tx, 0.0);
+      //shoot.aimingTarget(steering_adjust);
 
       if (detectIfTrackingFinished()) {
-        shoot.shootingTarget();
+        //shoot.shootingTarget();
         setLEDMode(1);
         setCamMode(1);
-        automaticShootingFinished = true;
       }
     }
     
@@ -206,13 +202,13 @@ public class VisionTracking {
 
   private static void showDashboardTeleop() {
     SmartDashboard.putNumber("Robot voltage", RobotPower.getRobotVoltage());
-    SmartDashboard.putBoolean("VisionTracking/ Is tracking", ledgate);
+    SmartDashboard.putBoolean("VisionTracking/ Is tracking", LimelightStart);
     SmartDashboard.putNumber("VisionTracking/ LimelightDrive", m_LimelightDriveCommand);
     SmartDashboard.putNumber("VisionTracking/ LimelightSteer", m_LimelightSteerCommand);
   }
 
   private static void showDashboardSeekig() {
-    SmartDashboard.putBoolean("VisionTracking/ Automatic shooting finished", automaticShootingFinished);
+    //SmartDashboard.putBoolean("VisionTracking/ Automatic shooting finished", automaticShootingFinished);
     SmartDashboard.putNumber("VisionTracking/ LimelightDrive", m_LimelightDriveCommand);
     SmartDashboard.putNumber("VisionTracking/ LimelightSteer", m_LimelightSteerCommand);
   }
