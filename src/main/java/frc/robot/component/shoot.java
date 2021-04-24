@@ -24,10 +24,10 @@ public class shoot{
         }
         
         if(Robot.xbox_1.getTriggerAxis(Hand.kLeft)>0.7){
-            turn.set(ControlMode.PercentOutput,0.3);
+            turn.set(ControlMode.PercentOutput,0.2);
         }
         else if(Robot.xbox_1.getTriggerAxis(Hand.kRight)>0.7){
-            turn.set(ControlMode.PercentOutput,-0.3);
+            turn.set(ControlMode.PercentOutput,-0.2);
         }
         else{
             turn.set(ControlMode.PercentOutput,0);
