@@ -17,11 +17,11 @@ public class suck{
     private static Boolean suckBoolean; 
 
     public static void init(){
-         suck =  new WPI_VictorSPX(1);
+         suck =  new WPI_VictorSPX(9);
          comRight = new Compressor();
          comLeft = new Compressor();
          SolRight = new DoubleSolenoid(0,1);
-         SolLeft = new DoubleSolenoid(0,2);
+         SolLeft = new DoubleSolenoid(2,3);
          compreBoolean = true;
          suckBoolean = false;
          comRight.setClosedLoopControl(compreBoolean);
@@ -29,20 +29,16 @@ public class suck{
     }
 
     public static void teleop(){
-        if(Robot.xbox.getRawButton(5)) {
+        if(Robot.xbox_1.getRawButton(10)) {
             SolRight.set(Value.kForward);
             SolLeft.set(Value.kForward);
-        }
-        else if(Robot.xbox.getRawButton(6)){
-            SolRight.set(Value.kReverse);
-            SolLeft.set(Value.kReverse);
         }
         else{
             SolRight.set(Value.kOff);
             SolLeft.set(Value.kOff);
         }
 
-        if(Robot.xbox.getRawButton(7)){
+        if(Robot.xbox_1.getYButton()){
             suckBoolean = !suckBoolean;
         }
         if(suckBoolean){

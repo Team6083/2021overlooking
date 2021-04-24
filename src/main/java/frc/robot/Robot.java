@@ -23,14 +23,17 @@ import frc.robot.system.NewAutoEngine;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static xbox xbox;
+  public static xbox xbox_1;
+  public static xbox xbox_2;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
-      xbox = new xbox(1);
+      xbox_1 = new xbox(0);
+      xbox_2 = new xbox(1);
+
       drivebase.init();
       shoot.init();
       suck.init();
