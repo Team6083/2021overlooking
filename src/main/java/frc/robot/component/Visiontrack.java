@@ -28,10 +28,9 @@ public class Visiontrack {
             SetLEDMode(3);
         }
 
-        if(detect && finishtracking()){
+        if(detect && !finishtracking()){
             aiming();
         }else{
-            shoot.startshoot();
             SetCamMode(1);
             SetLEDMode(1);
         }
@@ -46,7 +45,7 @@ public class Visiontrack {
             detect = false;
             return;
         }else{
-            heading = PIDcontrol.calculate(tx, 0);
+            heading = -PIDcontrol.calculate(tx, 0);
             walk = PIDcontrol.calculate(ty,0);
         }
 
@@ -76,6 +75,9 @@ public class Visiontrack {
 
     public static void seek(){
         double tv = gettv();
+        SetCamMode(0);
+        SetLEDMode(3);
+
         if(tv==0){
             if(shoot.limit()){
                 drivebase.drive.directControl(0.3, 0.3);
@@ -93,6 +95,8 @@ public class Visiontrack {
         boolean finished = false;
         if(Math.abs(gettx()) < error && Math.abs(getty()) < error){
             finished = true;
+            detect = false;
+            shoot.startshoot();
         }else{
             finished = false;
         }
