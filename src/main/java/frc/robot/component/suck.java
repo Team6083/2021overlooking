@@ -39,10 +39,10 @@ public class suck{
         }
 
         if(Robot.xbox_1.getYButton()){
-            suckBoolean = !suckBoolean;
-        }
-        if(suckBoolean){
             suck.set(ControlMode.PercentOutput,0.5);
+        }
+        else if(Robot.xbox_2.getYButton()){
+            suck.set(ControlMode.PercentOutput,-0.5);
         }
         else{
             suck.set(ControlMode.PercentOutput,0);
