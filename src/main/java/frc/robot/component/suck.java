@@ -17,7 +17,7 @@ public class suck{
     public static void init(){
          suck =  new WPI_VictorSPX(9);
          comRight = new Compressor();
-         SolRight = new DoubleSolenoid(1,0);
+         SolRight = new DoubleSolenoid(4,5);
          compreBoolean = true;
          comRight.setClosedLoopControl(compreBoolean);
     }
