@@ -12,7 +12,6 @@ public class suck{
     private static Compressor comRight;
     private static Boolean compreBoolean;
     private static DoubleSolenoid SolRight;
-    private static DoubleSolenoid SolLeft; 
 
     public static void init(){
          suck =  new WPI_VictorSPX(9);
@@ -25,11 +24,9 @@ public class suck{
     public static void teleop(){
         if(Robot.xbox_1.getRawButton(10)) {
             SolRight.set(Value.kForward);
-            SolLeft.set(Value.kForward);
         }
         else{
             SolRight.set(Value.kOff);
-            SolLeft.set(Value.kOff);
         }
 
         if(Robot.xbox_1.getYButton()){
