@@ -30,13 +30,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-      xbox = new xbox(1);
+      // xbox = new xbox(1);
       drivebase.init();
-      shoot.init();
-      suck.init();
-      transport.init();
-      upup.init();
-      VisionTracking.init();
+      // shoot.init();
+      // suck.init();
+      // transport.init();
+      // upup.init();
+      // VisionTracking.init();
       NewAutoEngine.init();
   }
 
@@ -61,11 +61,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     drivebase.teleOp();
-    shoot.teleop();
-    suck.teleop();
-    transport.teleOp();
-    upup.teleop();
-    VisionTracking.teleop();
+    // shoot.teleop();
+    // suck.teleop();
+    // transport.teleOp();
+    // // upup.teleop();
+    // VisionTracking.teleop();
   }
 
   @Override
