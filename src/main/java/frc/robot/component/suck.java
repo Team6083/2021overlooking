@@ -13,8 +13,7 @@ public class suck{
     private static Compressor comLeft;
     private static Boolean compreBoolean;
     private static DoubleSolenoid SolRight;
-    private static DoubleSolenoid SolLeft;
-    private static Boolean suckBoolean; 
+    private static DoubleSolenoid SolLeft; 
 
     public static void init(){
          suck =  new WPI_VictorSPX(9);
@@ -23,7 +22,6 @@ public class suck{
          SolRight = new DoubleSolenoid(0,1);
          SolLeft = new DoubleSolenoid(2,3);
          compreBoolean = true;
-         suckBoolean = false;
          comRight.setClosedLoopControl(compreBoolean);
          comLeft.setClosedLoopControl(compreBoolean);
     }
