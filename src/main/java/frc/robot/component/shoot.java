@@ -21,10 +21,10 @@ public class shoot{
             shoot.set(ControlMode.PercentOutput, 0);
         }
         if(Robot.xbox.getRawButton(4)){
-            turn.set(ControlMode.PercentOutput,0.5);
+            turn.set(ControlMode.PercentOutput,0.3);
         }
         else if(Robot.xbox.getRawButton(5)){
-            turn.set(ControlMode.PercentOutput,-0.5);
+            turn.set(ControlMode.PercentOutput,-0.3);
         }
         else{
             turn.set(ControlMode.PercentOutput,0);

@@ -14,7 +14,6 @@ public class drivebase {
     private static final int Left_2= 1;
     private static final int Right_1 = 2;
     private static final int Right_2 = 3;
-
     public static void init() {
         right_1 = new WPI_VictorSPX(Right_1);
         right_2 = new WPI_VictorSPX(Right_2);

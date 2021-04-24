@@ -13,6 +13,7 @@ import frc.robot.component.shoot;
 import frc.robot.component.suck;
 import frc.robot.component.transport;
 import frc.robot.component.upup;
+import frc.robot.system.NewAutoEngine;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
       transport.init();
       upup.init();
       VisionTracking.init();
+      NewAutoEngine.init();
   }
 
   @Override
@@ -44,10 +46,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    NewAutoEngine.start();
   }
 
   @Override
   public void autonomousPeriodic() {
+    NewAutoEngine.loop();
   }
 
   @Override
