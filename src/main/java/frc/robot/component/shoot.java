@@ -3,23 +3,24 @@ package frc.robot.component;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.Robot;
 
 public class shoot{
-    private static WPI_VictorSPX shoot;
+    private static VictorSP shoot;
     private static WPI_VictorSPX turn;
 
     public static void init(){
-         shoot =  new WPI_VictorSPX(1);
-         turn = new WPI_VictorSPX(3);
+         shoot =  new VictorSP(0);
+         turn = new WPI_VictorSPX(11);
     }
     
     public static void teleop(){
         if(Robot.xbox_1.getBButton()){
-            shoot.set(ControlMode.PercentOutput, 0.5);
+            shoot.set(0.5);
         }else{
-            shoot.set(ControlMode.PercentOutput, 0);
+            shoot.set(0);
         }
         
         if(Robot.xbox_1.getTriggerAxis(Hand.kLeft)>0.7){
@@ -33,12 +34,12 @@ public class shoot{
         }
     }
     public static void shootingTarget() {
-        shoot.set(ControlMode.PercentOutput,0.5);
+        shoot.set(0.5);
     }
     public static void findingTarget() {
-        turn.set(ControlMode.PercentOutput,0.5);
+        turn.set(0.5);
     }
     public static void aimingTarget(double shootSpeeed){
-        shoot.set(ControlMode.PercentOutput,shootSpeeed);
+        shoot.set(shootSpeeed);
     }
 }

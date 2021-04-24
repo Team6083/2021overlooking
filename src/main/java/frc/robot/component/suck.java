@@ -10,7 +10,6 @@ import frc.robot.Robot;
 public class suck{
     private static WPI_VictorSPX suck;
     private static Compressor comRight;
-    private static Compressor comLeft;
     private static Boolean compreBoolean;
     private static DoubleSolenoid SolRight;
     private static DoubleSolenoid SolLeft; 
@@ -18,12 +17,9 @@ public class suck{
     public static void init(){
          suck =  new WPI_VictorSPX(9);
          comRight = new Compressor();
-         comLeft = new Compressor();
-         SolRight = new DoubleSolenoid(0,1);
-         SolLeft = new DoubleSolenoid(2,3);
+         SolRight = new DoubleSolenoid(1,0);
          compreBoolean = true;
          comRight.setClosedLoopControl(compreBoolean);
-         comLeft.setClosedLoopControl(compreBoolean);
     }
 
     public static void teleop(){
