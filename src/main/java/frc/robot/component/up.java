@@ -16,10 +16,10 @@ public class up{
     }
     public static void teleop(){
         if(Robot.xbox_1.getXButton()){
-            rope.set(ControlMode.PercentOutput,0.5);
+            rope.set(ControlMode.PercentOutput,0.8);
         }
         else if(Robot.xbox_1.getAButton()){
-            rope.set(ControlMode.PercentOutput,0.5);
+            rope.set(ControlMode.PercentOutput,-0.8);
         }
         else{
             rope.set(ControlMode.PercentOutput,0);

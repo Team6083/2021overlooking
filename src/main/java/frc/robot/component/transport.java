@@ -16,36 +16,23 @@ public class transport {
     }
 
     public static void teleOp(){
-        if(Robot.xbox_2.getBumper(Hand.kLeft)){
-            horizontal.set(ControlMode.PercentOutput,-0.4);
-            straight.set(ControlMode.PercentOutput,-0.4);
+        if(Robot.xbox_2.getRawButton(5)){
+            horizontal.set(ControlMode.PercentOutput,0.5);
+            straight.set(ControlMode.PercentOutput,0.5);
+        }
+        else if(Robot.xbox_2.getRawButton(6)){
+            horizontal.set(ControlMode.PercentOutput,-0.5);
+            straight.set(ControlMode.PercentOutput,-0.5);
+        }
+        else if(Robot.xbox_2.getBButton()){
+            straight.set(ControlMode.PercentOutput,0.5);
+        }
+        else if(Robot.xbox_2.getAButton()){
+            horizontal.set(ControlMode.PercentOutput,0.5);
         }
         else{
             horizontal.set(ControlMode.PercentOutput,0);
             straight.set(ControlMode.PercentOutput,0);
-        }
-        
-        if(Robot.xbox_2.getBumper(Hand.kRight)){
-            horizontal.set(ControlMode.PercentOutput,0.4);
-            straight.set(ControlMode.PercentOutput,0.4);
-        }
-        else{
-            horizontal.set(ControlMode.PercentOutput,0);
-            straight.set(ControlMode.PercentOutput,0);
-        }
-
-        if(Robot.xbox_2.getBButton()){
-            straight.set(ControlMode.PercentOutput,-0.4);
-        }
-        else{
-            straight.set(ControlMode.PercentOutput,0);
-        }
-
-        if(Robot.xbox_2.getAButton()){
-            horizontal.set(ControlMode.PercentOutput,-0.4);
-        }
-        else{
-            horizontal.set(ControlMode.PercentOutput,0);
         }
 
     }

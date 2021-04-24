@@ -54,9 +54,9 @@ public class drivebase {
     protected static PIDController leftPID = new PIDController(kP, kI, kD);
     protected static PIDController rightPID = new PIDController(kP, kI, kD);
 
-    private static final int Left_1 = 0;
-    private static final int Left_2 = 1;
-    private static final int Right_1 = 2;
+    private static final int Left_1 = 6;
+    private static final int Left_2 = 7;
+    private static final int Right_1 = 5;
     private static final int Right_2 = 3;
 
     public static void init() {
@@ -77,7 +77,7 @@ public class drivebase {
         leftmotor = new SpeedControllerGroup(left_1, left_2);
         rightmotor = new SpeedControllerGroup(right_1, right_2);
         leftmotor.setInverted(true);
-        rightmotor.setInverted(false);
+        rightmotor.setInverted(true);
 
         drive = new DifferentialDrive(leftmotor, rightmotor);
 
@@ -97,7 +97,7 @@ public class drivebase {
     }
 
     public static void teleOp() {
-        drive.tankDrive(Robot.xbox_1.leftSpeed(), Robot.xbox_1.rightSpeed(), false);
+        drive.tankDrive(Robot.xbox_1.leftSpeed()/2, Robot.xbox_1.rightSpeed()/2, false);
     }
 
     public static void track(double speed, double rotation, boolean input) {
