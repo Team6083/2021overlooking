@@ -8,8 +8,8 @@ import frc.robot.Robot;
 public class Visiontrack {
     private static PIDController PIDcontrol;
     private static boolean detect = false;
-    private static final double Max_xspeed = 0.5;
-    private static final double Max_yspeed = 0.7;
+    private static final double Max_spinspeed = 0.5;
+    private static final double Max_drivespeed = 0.7;
     private static double heading;
     private static double walk;
 
@@ -45,31 +45,13 @@ public class Visiontrack {
             detect = false;
             return;
         }else{
-            heading = -PIDcontrol.calculate(tx, 0);
+            heading = PIDcontrol.calculate(tx, 0);
             walk = PIDcontrol.calculate(ty,0);
         }
-
-        if(Math.abs(heading)>Max_xspeed){
-            if(heading>=0){
-                heading = Max_xspeed;
-            }else{
-                heading = -Max_xspeed;
-            }
-        }
-
-        if(Math.abs(walk)>Max_yspeed){
-            if(walk>=0){
-                walk = Max_yspeed;
-            }else{
-                walk = -Max_yspeed;
-            }
-        }
-
-        if(shoot.limit()){  //if turrent spin to the limit position rotate the drivebase
-            drivebase.drive.arcadeDrive(walk, heading, false);
+        if(shoot.limit()){
+            AimWithTurrent(heading,walk);
         }else{
-            shoot.spin(heading);
-            drivebase.drive.directControl(walk, -walk);
+            AimOnlyDrivebase(heading, walk);
         }
     }
 
@@ -96,12 +78,52 @@ public class Visiontrack {
         if(Math.abs(gettx()) < error && Math.abs(getty()) < error){
             finished = true;
             detect = false;
-            shoot.startshoot();
         }else{
             finished = false;
         }
 
         return finished;
+    }
+
+    private static void AimWithTurrent(double tx, double ty){
+        if(Math.abs(tx)>Max_spinspeed){
+            if(tx>=0){
+                tx = Max_spinspeed;
+            }else{
+                tx = -Max_spinspeed;
+            }
+
+            if(Math.abs(ty)>Max_drivespeed){
+                if(ty>=0){
+                    ty = Max_drivespeed;
+                }else{
+                    ty = -Max_drivespeed;
+                }
+            }
+        }
+
+        shoot.spin(tx);
+        drivebase.drive.directControl(ty, ty);
+    }
+
+    private static void AimOnlyDrivebase(double tx, double ty){
+        if(Math.abs(tx)>Max_drivespeed){
+            if(tx>=0){
+                tx = Max_drivespeed;
+            }else{
+                tx = -Max_drivespeed;
+            }
+
+            if(Math.abs(ty)>Max_drivespeed){
+                if(ty>=0){
+                    ty = Max_drivespeed;
+                }else{
+                    ty = -Max_drivespeed;
+                }
+            }
+        }
+
+        drivebase.drive.arcadeDrive(ty, tx, false);
     }
 
     private static void SetCamMode(int mode){

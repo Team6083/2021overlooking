@@ -10,7 +10,7 @@ public class shoot{
     private static WPI_VictorSPX shoot;
     private static WPI_VictorSPX spin;
     private static final int shootport = 1;
-    private static final int spinport = 3;
+    private static final int spinport = 11;
 
     public static void init(){
         shoot =  new WPI_VictorSPX(shootport);
