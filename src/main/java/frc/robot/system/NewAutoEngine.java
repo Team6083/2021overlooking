@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import frc.robot.component.drivebase;
+import frc.robot.component.shoot;
 
 public class NewAutoEngine {
 
@@ -73,6 +74,7 @@ public class NewAutoEngine {
       DoTakeball1();
     case kDoNothing:
       drivebase.directControl(0, 0);
+      shoot.shootingTarget();
       break;
     }
   }

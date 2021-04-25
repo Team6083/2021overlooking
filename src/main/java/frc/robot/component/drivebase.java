@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.LinearFilter;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -20,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.util.Units;
 import frc.robot.Robot;
+import frc.robot.xbox;
 
 public class drivebase {
     public static Encoder leftencoder;
@@ -47,6 +49,8 @@ public class drivebase {
     private static double kP = 0.68;
     private static double kI = 0.3;
     private static double kD = 0;
+    private static double boostr = 1;
+    private static double boostl = 1;
 
     protected static LinearFilter l_filter = LinearFilter.singlePoleIIR(0.1, 0.02);
     protected static LinearFilter r_filter = LinearFilter.singlePoleIIR(0.1, 0.02);
@@ -97,7 +101,12 @@ public class drivebase {
     }
 
     public static void teleOp() {
-        drive.tankDrive(Robot.xbox_1.leftSpeed()/2, Robot.xbox_1.rightSpeed()/2, false);
+        if(Robot.xbox_1.getBumper(Hand.kLeft)){
+            boostl = 1.5;
+        }else if(Robot.xbox_1.getBumper(Hand.kRight)){
+            boostr = 1.5;
+        }
+        drive.tankDrive(Robot.xbox_1.leftSpeed()/1.5*boostl, Robot.xbox_1.rightSpeed()/1.5*boostr, false);
     }
 
     public static void track(double speed, double rotation, boolean input) {

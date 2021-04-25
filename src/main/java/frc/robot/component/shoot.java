@@ -25,10 +25,10 @@ public class shoot{
             shoot.set(0);
         }
         
-        if(Robot.xbox_1.getTriggerAxis(Hand.kLeft)>Robot.xbox_1.getTriggerAxis(Hand.kRight)){
+        if(Robot.xbox_2.getTriggerAxis(Hand.kLeft)>Robot.xbox_2.getTriggerAxis(Hand.kRight)){
             turn.set(ControlMode.PercentOutput,-0.1);
         }
-        else if(Robot.xbox_1.getTriggerAxis(Hand.kRight)>Robot.xbox_1.getTriggerAxis(Hand.kLeft)){
+        else if(Robot.xbox_2.getTriggerAxis(Hand.kRight)>Robot.xbox_2.getTriggerAxis(Hand.kLeft)){
             turn.set(ControlMode.PercentOutput,0.1);
         }
         else{
@@ -37,6 +37,7 @@ public class shoot{
     }
     public static void shootingTarget() {
         shoot.set(0.8);
+        transport.autonomousTransport();
     }
     public static void findingTarget() {
         turn.set(0.1);

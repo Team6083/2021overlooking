@@ -40,7 +40,7 @@ public class Robot extends TimedRobot {
       transport.init();
       up.init();
       VisionTracking.init();
-      NewAutoEngine.init();
+      // NewAutoEngine.init();
   }
 
   @Override
@@ -49,12 +49,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    NewAutoEngine.start();
+  //   NewAutoEngine.start();
   }
 
   @Override
   public void autonomousPeriodic() {
-    NewAutoEngine.loop();
+    // NewAutoEngine.loop();
   }
 
   @Override
