@@ -41,8 +41,29 @@ public class NewAutoEngine {
     timer.start();
   }
 
+  static int step = 0;
+
   public static void loop() {
-    drivebase.runTraj(trajectory, timer.get());
+    switch (step) {
+    case 1:
+      drivebase.runTraj(trajectory, timer.get());
+      if (timer.get() > trajectory.getTotalTimeSeconds()) {
+        step++;
+        timer.reset();
+        timer.start();
+      }
+      break;
+    case 2:
+      drivebase.runTraj(trajectory, timer.get());
+      if (timer.get() > trajectory.getTotalTimeSeconds()) {
+        step++;
+        timer.reset();
+        timer.start();
+      }
+      break;
+    default:
+      break;
+    }
   }
 
 }
