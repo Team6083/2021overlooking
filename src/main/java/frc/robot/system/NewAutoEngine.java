@@ -22,7 +22,7 @@ public class NewAutoEngine {
   static int[] GroupTakeball1 = {8,9};
   static int[] Unname = {6,7};
   static String[] trajectoryJSON = {"output/output/center1.wpilib.json","output/output/center2-1.wpilib.json","output/output/center2-2.wpilib.json","output/output/center3.wpilib.json","output/output/port1.wpilib.json","output/output/port2.wpilib.json","output/output/takeball1.wpilib.json","output/output/takeball2.wpilib.json"};
-  static Trajectory[] trajectory = new Trajectory[currentStep+1];
+  static Trajectory[] trajectory = new Trajectory[trajectoryAmount+1];
 
   protected static Timer timer = new Timer();
   protected static SendableChooser<String> chooser;
