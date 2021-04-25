@@ -32,6 +32,7 @@ public class NewAutoEngine {
   protected static final String Center2 = "Center2";
   protected static final String Takeball1 = "Takeball1";
   protected static final String unname = "Unname";
+  protected static final String FirstGame = "First Game";
 
   public static void init() {
     chooser = new SendableChooser<String>();
@@ -82,6 +83,7 @@ public class NewAutoEngine {
     chooser.addOption("Center", Center);
     chooser.addOption("Center2", Center2);
     chooser.addOption("Takeball1", Takeball1);
+    chooser.addOption("First Game",FirstGame);
     SmartDashboard.putData("Auto Choice", chooser);
 }
   public static void DoCenter(){
