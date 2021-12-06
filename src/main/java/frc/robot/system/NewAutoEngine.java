@@ -122,60 +122,44 @@ public class NewAutoEngine {
   }
 
   public static void DoCenter2() {
-    // for (int i = 0; i < currentStep; i++) {
-    // drivebase.runTraj(trajectory[GroupCenter[i]], timer.get());
-    // if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-    // currentStep++;
-    // timer.reset();
-    // timer.start();
-    // }
-    // switch(currentStep){
-    // case 1:
-    // drivebase.runTraj(trajectory[GroupCenter2[0]], timer.get());
-    // if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-    // currentStep++;
-    // timer.reset();
-    // timer.start();
-    // }
-    // break;
-    // case 2:
-    // drivebase.runTraj(trajectory[GroupCenter2[1]], timer.get());
-    // if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-    // currentStep++;
-    // timer.reset();
-    // timer.start();
-    // }
-    // break;
-    // }
-    // }
-  }
+    switch(currentStep){
+    case 1:
+    drivebase.runTraj(trajectory[GroupCenter2[0]], timer.get());
+    if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
+    currentStep++;
+    timer.reset();
+    timer.start();
+    }
+    break;
+    case 2:
+    drivebase.runTraj(trajectory[GroupCenter2[1]], timer.get());
+    if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
+    currentStep++;
+    timer.reset();
+    timer.start();
+    }
+    break;
+    }
+    }
 
   public static void DoTakeball1() {
-    for (int i = 0; i < currentStep; i++) {
-      drivebase.runTraj(trajectory[GroupCenter[i]], timer.get());
+      switch(currentStep){
+      case 1:
+      drivebase.runTraj(trajectory[GroupTakeball1[0]], timer.get());
       if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-        currentStep++;
-        timer.reset();
-        timer.start();
+      currentStep++;
+      timer.reset();
+      timer.start();
       }
-      // switch(currentStep){
-      // case 1:
-      // drivebase.runTraj(trajectory[GroupTakeball1[0]], timer.get());
-      // if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-      // currentStep++;
-      // timer.reset();
-      // timer.start();
-      // }
-      // break;
-      // case 2:
-      // drivebase.runTraj(trajectory[GroupTakeball1[1]], timer.get());
-      // if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
-      // currentStep++;
-      // timer.reset();
-      // timer.start();
-      // }
-      // break;
-      // }
+      break;
+      case 2:
+      drivebase.runTraj(trajectory[GroupTakeball1[1]], timer.get());
+      if (timer.get() > trajectory[currentStep].getTotalTimeSeconds()) {
+      currentStep++;
+      timer.reset();
+      timer.start();
+      }
+      break;
+      }
     }
   }
-}
